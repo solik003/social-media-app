@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import { useContext, useRef } from 'react';
 import { loginCall } from '../../apiCalls';
 import { AuthContext } from '../../context/AuthContext';
+import { CircularProgress } from '@mui/material';
 
 const Login = () => {
     const email = useRef();
@@ -34,10 +35,12 @@ const Login = () => {
                 <form className="loginBox" onSubmit={handleClick}>
                     <input placeholder="Email" type="email" required className="loginInput" ref={email}/>
                     <input placeholder="Password" type="password" required minLength="6" className="loginInput" ref={password}/>
-                    <button className="loginButton">Log In</button>
+                    <button className="loginButton" type="submit" disabled={isFetching}>
+                        {isFetching ? <CircularProgress color="white" size="20px" /> : 'Log in' }
+                    </button>
                     <span className="loginForgot">Forgot Password?</span>
                     <button className="loginRegisterButton">
-                        Create a New Account
+                        {isFetching ? <CircularProgress color="white" size="20px" /> : 'Create a New Account' }
                     </button>
                 </form>
             </div>
