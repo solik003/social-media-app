@@ -10,13 +10,6 @@ const postRoute = require("./routes/posts");
 
 dotenv.config();
 
-// mongoose.connect(
-//     process.env.MONGO_URL, 
-//     {useNewUrlParser: true, useUnifiedTopology: true},
-//     () => {
-//     console.log("Connected to MongoDB");
-// });
-
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to MongoDB");
